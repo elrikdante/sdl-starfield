@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
-#define NUM_DOTS 10192
+#define NUM_DOTS 2048
 #define SCREEN_WIDTH 	640
 #define WINDOW_TITLE "Unicorn Tears: Star Field X"
 #define SCREEN_HEIGHT	480
@@ -19,12 +19,12 @@ SDL_Surface *main_screen;
 void init_dots() {
 	int i = 0;
 	for (i;i < NUM_DOTS; i++) {
-		demo_dots[i].red = rand() % 255;
-		demo_dots[i].green = rand() % 255;
-		demo_dots[i].blue = rand() % 255;
-		demo_dots[i].x = rand() % SCREEN_WIDTH;
-		demo_dots[i].y = rand() % SCREEN_HEIGHT;
-		demo_dots[i].speed = 1 + rand() % 5;
+	  demo_dots[i].red = 0;
+	  demo_dots[i].green = rand() % 255;
+	  demo_dots[i].blue = rand() % 255;
+	  demo_dots[i].x = rand() % SCREEN_WIDTH;
+	  demo_dots[i].y = rand() % SCREEN_HEIGHT;
+	  demo_dots[i].speed = 1 + rand() % 5;
 	}
 }
 
@@ -85,7 +85,7 @@ int main(int argn, char **argv) {
 	active = 1;
 
 	while(active) {
-		SDL_FillRect(main_screen,NULL,SDL_MapRGBA(main_screen->format,0,0,255,255));
+		SDL_FillRect(main_screen,NULL,SDL_MapRGBA(main_screen->format,0,0,0,255));
 		draw_screen();
 		SDL_Flip(main_screen);
 		move_dots();
